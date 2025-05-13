@@ -1,0 +1,47 @@
+name: Run Cypress tests and publish Allure report
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '00 18 * * *'
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        run: npx cypress run --env allure=true
+
+      - name: Install Allure
+        run: |
+          npm install -g allure-commandline --save-dev
+          allure --version
+
+      - name: Generate Allure Report
+        run: |
+          allure generate allure-results --clean -o allure-report
+
+      - name: Upload Allure report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
+
+      - name: Deploy Allure report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{secrets.CI_TOKEN}}
+          publish_dir: allure-report
