@@ -34,7 +34,7 @@ describe('Restful booker Api testing', () =>{
 
 
     it('Authorize valid and invalid login/password pairs', () => {
-      cy.fixture('authData').then((testCases) => {
+      cy.fixture('authdata').then((testCases) => {
         testCases.forEach((testCase) => {
           cy.request({
             method: 'POST',
