@@ -1,0 +1,24 @@
+{
+  "name": "cypress-api-testing",
+  "version": "1.0.0",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elenkaFila/Cypress-api-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elenkaFila/Cypress-api-testing/issues"
+  },
+  "homepage": "https://github.com/elenkaFila/Cypress-api-testing#readme",
+  "description": "",
+  "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.41.1",
+    "cypress": "^14.3.3"
+  }
+}
