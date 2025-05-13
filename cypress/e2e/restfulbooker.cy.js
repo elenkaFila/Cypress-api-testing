@@ -1,7 +1,7 @@
 import Ajv from "ajv";
 import { faker } from '@faker-js/faker';
 
-import { genData, generateUpdatedData,generatePartialUpdate} from '../../support/generateData';
+import { genData, generateUpdatedData,generatePartialUpdate} from '../support/generateData';
 
 const ajv = new Ajv({ allErrors: true, verbose: true }); 
 const data = genData();
@@ -202,7 +202,7 @@ describe('Restful booker Api testing', () =>{
 
 
 // Команда запуска из CLI:
-//npx cypress run --spec cypress/e2e/api/restfulbooker.cy.js --env allure=true
+//npx cypress run --spec cypress/e2e/restfulbooker.cy.js --env allure=true
 
 // Для отчета:
 //npx allure generate allure-results -o allure-report
